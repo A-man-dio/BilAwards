@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bilibou Awards</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            margin: 0;
+
+        }
+
+        #ocultar {
+            display: none !important;
+        }
+
+        .no {
+            transform: translate();
+            transition: transform 0.2s;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            object-fit: cover;
+            min-height: 100vh;
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #content {
+            z-index: 1;
+            /* Coloca o conteúdo acima do vídeo */
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+        }
+
+        h2 {
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            align-items: center;
+            height: 40px;
+            width: 90px;
+            font-size: 14px;
+        }
+
+        #block {
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            #block {
+                gap: 15px;
+            }
+
+            #block {
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            button {
+                width: 80px;
+                height: 35px;
+                font-size: 12px;
+            }
+            video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+            .no {
+                max-width: 100%;
+
+                /* Evita que o botão saia da tela */
+            }
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <video src="./vid/sigmaCR7.mp4" autoplay loop muted></video>
+    <h1>BILIBOU AWARDS</h1>
+    <h2>Integrante mais bonito do grupo</h2>
+    <div id="block">
+        <div onmouseover="rejeito(0)" onmousemove="rejeito(0)" onmouseenter="rejeito(0)" class="no" id="1">
+            <button>Christopher</button>
+        </div>
+        <div id="yes">
+            <button onclick="aceito()">Ernesto</button>
+        </div>
+        <div onmouseover="rejeito(1)" onmousemove="rejeito(1)" onmouseenter="rejeito(1)" class="no" id="2">
+            <button>Jonilson</button>
+        </div>
+        <div onmouseover="rejeito(2)" onmousemove="rejeito(2)" onmouseenter="rejeito(2)" class="no" id="3">
+            <button>João</button>
+        </div>
+        <div onmouseover="rejeito(3)" onmousemove="rejeito(3)" onmouseenter="rejeito(3)" class="no" id="4">
+            <button>Hélder</button>
+        </div>
+        <div onmouseover="rejeito(4)" onmousemove="rejeito(4)" onmouseenter="rejeito(4)" class="no" id="5">
+            <button>Waldimir</button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+
+    var block = document.querySelector('#block');
+    var h2 = document.querySelector('h2');
+    var nao = document.querySelectorAll('.no');
+
+    var buttonWidth = 90; // Largura do botão "Aéreo"
+    var buttonHeight = 40; // Altura do botão "Aéreo"
+
+    function aceito() {
+        event.preventDefault();
+        block.setAttribute('id', 'ocultar');
+        h2.innerHTML = "Obrigado pelo seu voto justo!!!";
+    }
+
+    function rejeito(n) {
+
+        var blockRect = block.getBoundingClientRect();
+        var maxX = blockRect.width - buttonWidth;
+        var maxY = blockRect.height - buttonHeight;
+        var x = Math.floor(Math.random() * maxX);
+        var y = Math.floor(Math.random() * maxY);
+        //nao[1].style.transform = `translate()`
+
+        console.log(nao);
+
+        nao[n].style.transform = `translate(${x}px, ${y}px)`;
+    }
+</script>
+
+</html>
