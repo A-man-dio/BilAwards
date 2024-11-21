@@ -120,7 +120,7 @@
 
 <body>
 
-    <video controls autoplay loop muted>
+    <video autoplay loop muted>
       <source src="vid/sigmaCR7.mp4" type="video/mp4">
     </video>
     <h1>BILIBOU AWARDS</h1>
@@ -170,9 +170,6 @@
         var maxY = blockRect.height - buttonHeight;
         var x = Math.floor(Math.random() * maxX);
         var y = Math.floor(Math.random() * maxY);
-        //nao[1].style.transform = `translate()`
-
-        console.log(nao);
 
         nao[n].style.transform = `translate(${x}px, ${y}px)`;
     }
